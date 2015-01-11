@@ -1,6 +1,7 @@
 
 var stage, W = 640, H = 960, IS_TOUCH, SCREEN_SHOW_ALL = !1, g_androidsoundtimer = null, g_followAnim = null;
 onload = function () {
+    didLoad();
 	stage = new createjs.Stage("stage");
 	if (IS_TOUCH = createjs.Touch.isSupported()) {
 		createjs.Touch.enable(stage, !0);
