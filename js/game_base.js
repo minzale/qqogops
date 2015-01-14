@@ -23,6 +23,7 @@ function cacheBest(a) {
 	a > best && (best = a, gjStorage.set(keyStorage, best));
 }
 function onNewScore(score) {
+    
 	cacheBest(score);
 	dp_submitScore(score);
 	

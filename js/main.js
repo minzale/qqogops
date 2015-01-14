@@ -70,6 +70,7 @@ Qp_h.prototype.gameover = function () {
 	GAMESTATUS != GAME_OVER && (GAMESTATUS = GAME_OVER, createjs.Ticker.removeEventListener("tick", window.update), this.gameplayinglayer.visible = !1, onNewScore(score), this.menuLayer.gameover.buttonactions(), this.menuLayer.gameover.refresh(), this.menuLayer.visible = !0);
 };
 Qp_h.prototype.startGame = function () {
+    window.location.href="weiyou://getData/dontmiss_hiScore/callbackHandler"; // by decamincow
 	GAMESTATUS = GAME_START;
 	record_flag = !1;
 	qp_b = [];
@@ -151,6 +152,7 @@ Qp_p.prototype.buttonactions = function () {
 Qp_p.prototype.refresh = function () {
 	this.bestscoreText.text = "" + best;
 	this.scoreText.text = "" + score;
+    window.location.href="weiyou://putData/dontmiss_hiScore/" + best; // by decamincow
 };
 function Qp_l() {
 	this.initialize();
@@ -264,4 +266,15 @@ Qp_q.prototype.refreshLoop = function (a) {
 	0 >= this.x - 67 ? this.vx = Math.abs(this.vx) : this.x + 67 >= W && (this.vx = -Math.abs(this.vx));
 	return this.y >= H;
 };
+function callbackHandler(value) {//decamincow
+//    alert("callbackHandlervalue=" + value );
+    
+    if(value == null && !isNaN(value)){
+        temp = 0;
+    }
+    if((value == null && isNaN(value)) || (isNaN(value) && value == "")){
+        temp = "0";
+    }
+    gjStorage.set(keyStorage, temp)
+}
 
